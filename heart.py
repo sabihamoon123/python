@@ -1,0 +1,39 @@
+import turtle as t
+import random
+
+tim = t.Turtle()
+t.colormode(255)
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    color = (r, g, b)
+    return color
+
+# colors = ["dark red", "maroon", "forest green", "medium blue", "magenta", "light pink", "pale goldenrod"]
+
+tim.speed("fastest")
+
+def draw_heart():
+    # tim.begin_fill()
+    tim.left(140)
+    tim.forward(100)
+    tim.circle(-50, 200)
+    tim.left(120)
+    tim.circle(-50, 200)
+    tim.forward(100)
+    tim.end_fill()
+    tim.right(140)  # Reset orientation
+
+def draw_spirograph(size_of_gap):
+    for _ in range(int(360 / size_of_gap)):
+        tim.color(random_color())
+        draw_heart()  # Draw a heart instead of a circle
+        tim.setheading(tim.heading() + size_of_gap)
+
+draw_spirograph(5)
+
+
+screen = t.Screen()
+screen.exitonclick()
